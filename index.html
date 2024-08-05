@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buckshot Roulette Bullet Counter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Buckshot Roulette Fate Tracker</span>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="liveRounds" type="number" min="1" max="4">
+                                <label for="liveRounds">Live Rounds (1-4)</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="blankRounds" type="number" min="1" max="4">
+                                <label for="blankRounds">Blank Rounds (1-4)</label>
+                            </div>
+                        </div>
+                        <div class="fix-mode-indicator">Fix mode active</div>
+                        <div class="row remaining-counts">
+                            <div class="col s12">
+                                <p class="remaining-live">Remaining Live: <span id="remainingLive">0/0</span></p>
+                            </div>
+                            <div class="col s12">
+                                <p class="remaining-blank">Remaining Blank: <span id="remainingBlank">0/0</span></p>
+                            </div>
+                        </div>
+                        <div id="bulletContainer" class="bullet-container"></div>
+                        <div class="turn-container">
+                            <button class="btn-floating btn-small waves-effect waves-light teal" onclick="changeTurn(-1)"><i class="material-icons">chevron_left</i></button>
+                            <span id="turnCounter" class="white-text">1</span>
+                            <button class="btn-floating btn-small waves-effect waves-light teal" onclick="changeTurn(1)"><i class="material-icons">chevron_right</i></button>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn waves-effect waves-light" onclick="resetGame()">Reset (R)</button>
+                        <button class="btn waves-effect waves-light" onclick="toggleFixMode()">Fix Mode (F)</button>
+                        <button class="btn waves-effect waves-light modal-trigger" data-target="burnerPhoneModal">Burner Phone (B)</button>
+                        <button class="btn waves-effect waves-light" onclick="toggleInverter()">Toggle Inverter (I)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Coin Flip</span>
+                        <div class="coin-flip-container">
+                            <button class="btn waves-effect waves-light" onclick="flipCoin()">Flip Coin (C)</button>
+                            <div id="coinResult" class="coin-result fadeIn">The coin spins like fate's whisper, deciding at the tip of trembling fingers.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="burnerPhoneModal" class="modal">
+        <div class="modal-content">
+            <h4>Burner Phone Information</h4>
+            <div class="input-field">
+                <input id="burnerPhoneTurnsAhead" type="number" min="1" max="8">
+                <label for="burnerPhoneTurnsAhead">Turns Ahead</label>
+            </div>
+            <div class="input-field">
+                <select id="burnerPhoneBulletType">
+                    <option value="live">Live</option>
+                    <option value="blank">Blank</option>
+                </select>
+                <label>Bullet Type</label>
+            </div>            
+        </div>
+        <div class="modal-footer">
+            <button class="modal-close waves-effect waves-green btn-flat">Cancel</button>
+            <button id="applyBurnerPhone" class="waves-effect waves-green btn">Apply</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="main.js"></script>
+    <script src="game-logic.js"></script>
+    <script src="event-handlers.js"></script>
+    <script src="coin-flip.js"></script>
+</body>
+</html>

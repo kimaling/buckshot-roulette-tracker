@@ -1,0 +1,217 @@
+body {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.card-title {
+    font-weight: bold !important;
+}
+
+.bullet-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.bullet {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+    overflow: visible;
+}
+
+.bullet::before,
+.bullet::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    transition: all 0.3s;
+}
+
+.bullet::before {
+    left: 0;
+    background-color: rgba(244, 67, 54, 0.5); /* Red */
+}
+
+.bullet::after {
+    right: 0;
+    background-color: rgba(33, 150, 243, 0.5); /* Blue */
+}
+
+.bullet.live {
+    background-color: #f44336;
+}
+
+.bullet.live::before,
+.bullet.live::after {
+    display: none;
+}
+
+.bullet.blank {
+    background-color: #2196f3;
+}
+
+.bullet.blank::before,
+.bullet.blank::after {
+    display: none;
+}
+
+.bullet.unknown::before,
+.bullet.unknown::after {
+    opacity: 1;
+}
+
+.bullet.current {
+    border: 3px solid #26A69A;
+}
+
+.bullet .inverter-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px; 
+    height: 20px;
+    background-color: #333333;
+	border-radius: 50%;
+    display: none;
+    z-index: 2;
+}
+
+.bullet.inverter-used .inverter-badge {
+    display: block;
+}
+
+.bullet .lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+}
+
+.bullet.locked .lock-icon {
+    opacity: 1;
+}
+
+.prob-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    padding: 0 5px;
+    z-index: 1;
+}
+
+.probability {
+    font-size: 12px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2px 4px;
+    border-radius: 10px;
+}
+
+.turn-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.turn-container.active {
+    display: flex;
+}
+
+#turnCounter {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.fix-mode-indicator {
+    background-color: #ffeb3b;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.fix-mode-indicator.active {
+    display: inline-block;
+}
+
+.card-action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-action button {
+    flex: 1;
+    min-width: 120px;
+}
+
+@media (max-width: 600px) {
+    .card-action button {
+        flex: 1 0 calc(50% - 5px);
+    }
+}
+
+.coin-flip-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#coinResult {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.coin-result {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.remaining-counts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.remaining-live {
+    color: #bf4040;
+}
+
+.remaining-blank {
+    color: #21609f;
+}
+
+.shoot-dealer {
+    color: #bf4040;
+    font-weight: bold;
+}
+
+.shoot-yourself {
+    color: #21609f;
+    font-weight: bold;
+}
